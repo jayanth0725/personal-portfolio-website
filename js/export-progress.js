@@ -8,13 +8,13 @@ export function getSavedProgress() {
 }
 
 export function updateProgressBar() {
-    const totalHeight = document.body.scrollHeight - window.innerHeight;
-    const progress = (window.scrollY / totalHeight) * 100;
+    const totalHeight = document.body.scrollHeight - window.innerHeight; /* Calculating the current total height */
+    const progress = (window.scrollY / totalHeight) * 100;  /* Calculates the new progress bar size */
 
     const bar = document.getElementById("progress-bar");
     if (bar) {
-        bar.style.width = progress + "%";
-        bar.setAttribute("aria-valuenow", Math.round(progress));
+        bar.style.width = progress + "%";   /* If bar exists, sets the new width of the bar */
+        bar.setAttribute("aria-valuenow", Math.round(progress));    /* Updates the aria attribute */
     }
 }
 

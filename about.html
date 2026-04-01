@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        <meta charset="utf-8">
+        <title>About</title>
+        <script src="js/flash-theme.js"></script>
+    </head>
+    <body>
+        <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <header>
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <button id="theme-toggle" class="btn-animated" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+            </nav>
+        </header>
+        
+        <main id="main-content">
+            <h1 class="page-title">About</h1>
+        
+            <div class="about-statement">   
+                <img id="self-img" src="images/pfp.jpg" alt="Profile photo of Jayanth Raveendra" height="200" width="200">
+                <p>
+                    I am a computer science undergraduate student with a strong interest in programming and technology.
+                    I enjoy learning how websites and software work behind the scenes and building my own projects to
+                    improve my skills. I started learning programming at a young age because of my father, and over time
+                    it has became something I genuinely enjoy doing. Apart from academics, I try to stay up to date with
+                    new technologies and stay active through running and sports like badminton and table tennis. I am also 
+                    an avid reader who enjoys good stories. I believe consistency and practice are the most important parts
+                    of learning programming. My goal is to become a skilled software developer and work on meaningful projects
+                    that solve real-world problems. I am currently focusing on improving my skills and understanding the
+                    fundamentals of programming and computer systems. In the future, I hope to contribute to larger open-source
+                    projects and continue learning about new technologies throughout my education.
+                </p>
+            </div>
+
+            <h2 class="timeline-title">My programming journey:</h2>
+            <ul id="timeline">
+                <li>
+                    <button class="toggle" aria-expanded="false">2014: First Exposure to Programming (Code.org)</button>
+                    <div class="content">
+                        My father started my programming journey when I was in primary school.
+                        I learnt to code on a great website called <a href="https://code.org/en-US" target="_blank" rel="noopener noreferrer">Code.org</a>.
+                        It taught basic coding concepts with great stories and block coding.
+                        Code.org had a concept of 'Hour of Code' where they had activities 
+                        that would take an hour and would be a good learning experience.
+                        It taught me my basics and made me really enjoy coding.
+                        I also dabbled in the turtle drawing software and QBASIC in middle school.
+                    </div>
+                </li>
+
+                <li>
+                    <button class="toggle" aria-expanded="false">2020: Started Learning Web Development (Progate)</button>
+                    <div class="content">
+                        When COVID began, I felt like learning new things and spending my time well. 
+                        I came across a website called <a href="https://progate.com/" target="_blank" rel="noopener noreferrer">Progate.com</a>
+                        that taught Web develeopment for free. I learnt about HTML, CSS and even Javascript there. My father encouraged me to
+                        try more languages on the website, and together we completed the basics of many languages - more about this is available
+                        in the <a href="projects.html">Projects page</a>.
+                    </div>
+                </li>
+
+                <li>
+                    <button class="toggle" aria-expanded="false">2023: Python and Databases in Senior Secondary School</button>
+                    <div class="content">
+                        During my 11th and 12th grades, I took Computer Science as my elective under Science stream.
+                        I learnt about Python in-depth and was introduced to MySQL and how to interact with the DBMS using Python.
+                        My teacher insisted on knowing how and what Python's built-in functions did and always made us code their functionality manually.
+                        As part of the mandatory project, I built a cooking guide with two of my classmates using Python's tkinter library and mySQL.
+                        The program could accept new recipes from the user, search for recipes from the connected MySQL database, generate meal plans
+                        for the week and accomodate dietary restrictions.
+                    </div>
+                </li>
+
+                <li>
+                    <button class="toggle" aria-expanded="false">2025: Started College and Competitive Programming</button>
+                    <div class="content">
+                        My journey took on new wings in college: I learnt C and academics required
+                        constant practice and learning of various interesting topics like recursion,
+                        dynamic programming, structs, file operations, makefiles, etc. I started competetive
+                        programming on various websites like Codeforces, CSES, Leetcode, Atcoder and USACO.
+                        I participated in multiple Codeforces contests as a rated participant. I also
+                        participated in various hackathons held in the college: build2break and Megathon 2025.
+                        I got hand-on learning from these events. These experiences helped me in making the CLI
+                        version of 'Twixt!' using only C - more on the <a href="projects.html">Projects page</a>.
+                        I also worked on keeping myself fit - I ran in an untimed 5k run with my friends,
+                        which was enjoyable and really showed me the importance of grit and perseverance.
+                    </div>
+                </li>
+
+                <li>
+                    <button class="toggle" aria-expanded="false">2026: Digging deeper into programming and web development</button>
+                    <div class="content">
+                        In the second semester, I built upon C and learnt C++ and its STL. 
+                        I participated in more Codeforces contests and also Lockout 2026. 
+                        Learnt about different data structures: stacks, queues, heaps, binary trees,
+                        graphs and algorithms like BFS, DFS, Kahn's.
+                        I also learnt shell-scripting, Python, HTML, CSS and Javascript, which have 
+                        been very interesting and have broadened my skill set and experience. For example,
+                        I have custom active shell-scripts running on my laptop to fix small bugs in my Linux Fedora distro.
+                        Furthermore, I ran a timed 5k run finishing it in 30 minutes which is my current personal best.
+                    </div>
+                </li>
+            </ul>
+
+            <div id="resume-prompt" hidden aria-live="polite">
+                Resume where you left off?
+                <button id="resume-btn" class="btn-animated">Yes</button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>©️ 2026 Jayanth Raveendra. Built for academic purposes</p>
+            <p>Built with HTML, CSS and vanilla Javascript.</p>
+            <p>Last updated: March 2026</p>
+        </footer>
+
+        <script src="js/toggle.js"></script>
+        <script src="js/timeline.js"></script>
+        <script type="module" src="js/import-progress.js"></script>
+    </body>
+</html>

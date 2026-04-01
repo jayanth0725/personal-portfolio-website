@@ -1,21 +1,21 @@
 const timeline = document.getElementById("timeline"); /* Gets the container of the single event listener */
 
 function saveOpenItems() {
-    const items = document.querySelectorAll("#timeline li");
-    const openIndexes = [];
+    const items = document.querySelectorAll("#timeline li");    /* Gets all the timeline elements */
+    const openIndexes = []; /* Will store their number here */
 
-    items.forEach((item, index) => {
+    items.forEach((item, index) => {    /* Iterating through all the elements and if their content class is open, pushing that element's number into openIndexes */
         const content = item.querySelector(".content");
         if (content.classList.contains("open")) {
             openIndexes.push(index);
         }
     });
 
-    sessionStorage.setItem("timeline-open", JSON.stringify(openIndexes));
+    sessionStorage.setItem("timeline-open", JSON.stringify(openIndexes));   /* Updating sessionStorage with the open element's numbers */
 }
 
 function expandTimeline(e) {    /* e contains info about what was clicked */
-    const button = e.target.closest(".toggle"); /* Makes sure that if user clicks slightly off, it still gets the correct button, checks for closest neighbour with class .toggle */
+    const button = e.target.closest(".toggle"); /* Checks the clicked element and its ancestors to find the closest one with the class .toggle */
     if(!button) return; /* If click is outside it, return */
 
     const content = button.nextElementSibling;
@@ -35,23 +35,23 @@ function expandTimeline(e) {    /* e contains info about what was clicked */
 
 function restoreOpenItems() {
     const saved = sessionStorage.getItem("timeline-open");
-    if (!saved) return;
+    if (!saved) return; /* If there is no saved value, return */
 
-    const openIndexes = JSON.parse(saved);
+    const openIndexes = JSON.parse(saved);  /* Get the element numbers that are open */
     const items = document.querySelectorAll("#timeline li");
 
-    openIndexes.forEach(index => {
+    openIndexes.forEach(index => {  /* Iterating through all the open elements  */
         const item = items[index];
-        if (!item) return;
+        if (!item) return; /* Stops the loop if there are no open elements */
 
-        const button = item.querySelector(".toggle");
+        const button = item.querySelector(".toggle");   
         const content = item.querySelector(".content");
 
-        content.classList.add("open");
-        button.setAttribute("aria-expanded", "true");
+        content.classList.add("open");  /* Opens the element's content */
+        button.setAttribute("aria-expanded", "true");   /* Sets the aria-expanded attribute of that element to true */
     });
 }
 
-restoreOpenItems();
+restoreOpenItems(); /* Restores the timeline elements. It is called only once when the page loads */
 
 timeline.addEventListener("click", expandTimeline); /* Adding event listener that calls expandTimeline when click occurs anywhere inside the timeline container */

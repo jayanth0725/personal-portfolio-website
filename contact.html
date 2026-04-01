@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        <meta charset="utf-8">
+        <title>Contact</title>
+        <script src="js/flash-theme.js"></script>
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <header>
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html" class="active">Contact</a>
+                <button id="theme-toggle" class="btn-animated" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+            </nav>
+        </header>
+        
+        <main id="main-content" class="contact-layout">
+            <h1 class="page-title">Contact</h1>
+
+            <div class="contact-links">
+                <a href="mailto:jayanth.raveendra@students.iiit.ac.in" class="contact-link">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M4 6l8 6 8-6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Email
+                </a>
+
+                <a href="https://github.com/jayanth0725" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 .5A12 12 0 0 0 0 12.7c0 5.5 3.4 10.1 8.2 11.8.6.1.8-.3.8-.6v-2.3
+                            c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8
+                            1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1.1.1-.8.4-1.4.8-1.7
+                            -2.7-.3-5.6-1.4-5.6-6.1 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.5.1-3.1
+                            0 0 1-.3 3.4 1.3a11.7 11.7 0 0 1 6.2 0c2.4-1.6 3.4-1.3 3.4-1.3
+                            .7 1.6.2 2.8.1 3.1.8.9 1.3 2 1.3 3.3 0 4.7-2.9 5.8-5.7 6.1
+                            .5.4.9 1.1.9 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7
+                            12 12 0 0 0 12 .5z"/>
+                    </svg>
+                    GitHub
+                </a>
+
+                <a href="https://linkedin.com/in/jayanth-raveendra-680bba376" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9v5.7H9.1V9h3.4v1.6h.1
+                            c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4
+                            c-1.2 0-2.1-1-2.1-2.1s1-2.1 2.1-2.1 2.1 1 2.1 2.1-1 2.1-2.1 2.1zM7.1
+                            20.5H3.5V9h3.6v11.5z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+
+            <p class="contact-message">Any questions/suggestions?</p>
+            <p class="contact-message">Fill out the below form to get in touch with me!</p>
+            <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" aria-describedby="name-error" required>
+                    <small id="name-error" class="error-message" aria-live="polite"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" aria-describedby="email-error" required>
+                    <small id="email-error" class="error-message" aria-live="polite"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" aria-describedby="message-error" required></textarea>
+                    <small id="message-error" class="error-message" aria-live="polite"></small>
+                </div>
+
+                <button type="submit" class="form-btn btn-animated">Send</button>
+            </form>    
+            
+            <div id="form-success" class="form-hidden" aria-live="polite">
+                ✅ Your message has been sent successfully!
+            </div>
+        </main>
+        
+        <footer>
+            <p>©️ 2026 Jayanth Raveendra. Built for academic purposes</p>
+            <p>Built with HTML, CSS and vanilla Javascript.</p>
+            <p>Last updated: March 2026</p>
+        </footer>
+
+        <script src="js/toggle.js"></script>
+        <script src="js/contact-form.js"></script>
+    </body>
+</html>
