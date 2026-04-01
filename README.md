@@ -8,7 +8,7 @@ The assignment is available [here](https://arihant25.github.io/iss-s26-a2/).
 
 Good luck, have fun!
 
-**Jayanth Raveendra – 2025101019**
+## Jayanth Raveendra – 2025101019
 
 ## D4 Feature Implementation
 
@@ -53,7 +53,7 @@ A custom cubic-bezier easing curve is also applied to the timeline accordion on 
 
 ### W3 Validator
 
-Home ![alt text](reports/validator_home.png)
+Home ![alt text](reports/validator_index.png)
 
 About ![alt text](reports/validator_about.png)
 
@@ -63,9 +63,21 @@ Contact ![alt text](reports/validator_contact.png)
 
 ### Lighthouse
 
-![alt text](reports/lighthouse_scores.png)
+Home ![alt text](reports/lighthouse_score_index.png)
 
-![alt text](reports/lighthouse_details.png)
+![alt text](reports/lighthouse_details_index.png)
+
+About ![alt text](reports/lighthouse_score_about.png)
+
+![alt text](reports/lighthouse_details_about.png)
+
+Projects ![alt text](reports/lighthouse_score_projects.png)
+
+![alt text](reports/lighthouse_details_projects.png)
+
+Contact ![alt text](reports/lighthouse_score_contact.png)
+
+![alt text](reports/lighthouse_details_contact.png)
 
 ### WCAG AA - Light Theme
 

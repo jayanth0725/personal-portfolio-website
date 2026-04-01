@@ -534,6 +534,8 @@ footer {
 }
 
 #resume-prompt {
+    opacity: 1;
+    transition: opacity 0.5s ease;
     position: fixed;
     bottom: var(--space-l);
     right: var(--space-l);
@@ -553,6 +555,11 @@ footer {
     );
     color: var(--colour-surface);
     border: none;
+}
+
+.fade-out {
+    opacity: 0 !important;
+    pointer-events: none; /* Prevents clicking the button while it's fading */
 }
 
 #progress-bar {
