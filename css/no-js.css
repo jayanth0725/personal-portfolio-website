@@ -1,0 +1,24 @@
+#theme-toggle {
+    display: none !important;   /* Hide the theme toggle button since it requires JS to function */
+}
+
+/* Projects Page: Makes cards visible without Intersection Observer */
+.hidden {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* About Page: Keeps timeline items expanded */
+.content {
+    max-height: none !important;
+    padding: var(--space-m) !important;
+}
+
+/* About Page: Hides the toggle arrow since it is no longer interactive */
+.toggle::after {
+    display: none !important;
+}
+
+.toggle {
+    cursor: default !important; /* Changes the cursor so the button doesn't imply interactivity */
+}

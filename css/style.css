@@ -847,8 +847,15 @@ input.success, textarea.success {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;     /* If the user prefers reduced motion, then I am overriding all */
-        transition: none !important;    /* the animation and transitions of all elements to none, effectively disabling all of it */
+    *,
+    *::before,
+    *::after {
+        /* Makes animations and transitions complete instantly, otherwise if disabled outright the elements stay at opacity 0 and never reach opacity 1 */
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        animation-delay: 0ms !important;    /* Overrides all staggered animation and transition delays */
+        transition-delay: 0ms !important;
     }
 }
