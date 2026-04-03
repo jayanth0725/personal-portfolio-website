@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap');
+
 :root {
     /* Colour Palette - default light theme*/
     --colour-bg: #f4f7ff;
     --colour-surface: #ffffff;
     --colour-primary: #2f4fd6;
-    --colour-primary-dark: #2f3e63;                             
-    --colour-accent: #A94E1A;
+    --colour-primary-dark: #2f3e63;  
+    --colour-on-primary: #ffffff;                           
+    --colour-accent: #a94e1a;
     --colour-text: #1f2933;
     --colour-text-muted: #6b7280;
     --colour-border: #dce4ff;
@@ -12,7 +15,7 @@
     --colour-shadow: #00000026;
 
     /* Typographic pairing */
-    --font-display: "PlayFair Display", serif;
+    --font-display: "Playfair Display", serif;
     --font-body: "Inter", system-ui, sans-serif;
 
     /* Type scale */
@@ -46,6 +49,7 @@
     --colour-surface: #1e293b;
     --colour-primary: #7c95ff;
     --colour-primary-dark: #93a6ff;
+    --colour-on-primary: #ffffff;
     --colour-accent: #f4a261;
     --colour-text: #e5e7eb;
     --colour-text-muted: #94a3b8;
@@ -286,7 +290,8 @@ footer {
     justify-content: center;
 
     font-size: var(--text-m);
-    color: var(--colour-surface);
+    color: var(--colour-on-primary);
+    font-weight: 550;
 
     background: linear-gradient(
         135deg,
@@ -371,6 +376,7 @@ footer {
     border-radius: var(--space-s);
     margin: var(--space-m);
     overflow: hidden;
+    min-height: 120px;
 
     box-shadow:
         0 var(--space-xs) var(--space-m) var(--colour-shadow);
@@ -387,7 +393,6 @@ footer {
 
 .card img {
     width: 100%;
-    aspect-ratio: 16/9; 
     object-fit: cover;
     display: block;
     border-radius: var(--space-s);
@@ -515,7 +520,7 @@ footer {
         var(--colour-primary),
         var(--colour-accent)
     );
-    color: white;
+    color: var(--colour-on-primary);
     border: none;
     cursor: pointer;
     
@@ -553,7 +558,8 @@ footer {
         var(--colour-primary),
         var(--colour-accent)
     );
-    color: var(--colour-surface);
+    color: var(--colour-on-primary);
+    font-weight: 550;
     border: none;
 }
 
@@ -693,7 +699,8 @@ footer {
         var(--colour-primary),
         var(--colour-accent)
     );
-    color: var(--colour-surface);
+    color: var(--colour-on-primary);
+    font-weight: 550;
     border: none;
     padding: var(--space-m) var(--space-xl);
     margin-top: var(--space-s);
@@ -834,7 +841,6 @@ input.success, textarea.success {
     .layout {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(120px, auto);
     }
 
     .hero {

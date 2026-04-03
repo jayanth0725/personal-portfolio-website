@@ -11,11 +11,12 @@ window.addEventListener("scroll", () => {   /* Each time the user scrolls, these
 function scrollToSavedPosition() {
     if(saved === null) return; /* Safety check, if saved is null it returns */
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; /* Check for reduced motion preference in JS */
     document.getElementById("resume-prompt").hidden = true; /* Hides the prompt after clicking 'Yes' */
     
     window.scrollTo({
         top: parseInt(saved), /* Scrolls to the saved position after parseInt converts the string to integer */
-        behavior: "smooth" /* Makes the transition smooth (unless user prefers reduced motion) */
+        behavior: prefersReducedMotion ? "auto" : "smooth" /* Makes the transition smooth (unless user prefers reduced motion) */
     });
 }
 
