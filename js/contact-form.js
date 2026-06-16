@@ -126,28 +126,62 @@ messageInput.addEventListener("input", () => {
     sessionStorage.setItem("contactMessage", messageInput.value);   /* Updates sessionStorage with current message input value */
 });
 
-form.addEventListener("submit", function(e) {
+form.addEventListener("submit", async function(e) {
     e.preventDefault(); /* Reroutes the form handling to my logic */
     clearErrors();  /* Clears old errors so they don't appear in the input fields */
 
     if(validateForm()) {
-        formSuccess.classList.remove("form-hidden");    /* Removes the hidden class and adds show class so that confirmation message appears */
-        formSuccess.classList.add("form-success-show");
 
-        setTimeout(() => {
-            form.classList.add("form-hidden");  /* Gives time for button animation to occur and success borders to appear around the input fields */
-        }, 200);
+        const formData = {  /* Prepare the payload data */
+            access_key: "bcef195c-9b4d-4792-be35-4040ce9a9e52", /* Public API key for Web3Forms */
+            name: nameInput.value.trim(),   /* Info submitted in the form */
+            email: emailInput.value.trim(),
+            message: messageInput.value.trim()
+        };
 
-        setTimeout(() => {
-            form.style.display = "none";    /* Makes the field to not be rendered by HTML, effectively disappears */
-            form.reset();   /* Resets the input fields */
+        try{
+            /* Await the fetch request, execution pauses here till server responds */
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(formData)  /* Serialising the JS object into a JSON string for HTTPS transmission (raw byte streams) */
+            });
 
-            sessionStorage.removeItem("contactName");   
-            sessionStorage.removeItem("contactEmail");
-            sessionStorage.removeItem("contactMessage");    /* Clears the sessionStorage of the three input fields now that form is submitted */
+            const result = await response.json(); /* Await the parsing of the JSON response from the web3forms server */
+        
+            if(response.status === 200) {   /* If the request was successful */
+                formSuccess.classList.remove("form-hidden");    /* Removes the hidden class and adds show class so that confirmation message appears */
+                formSuccess.classList.add("form-success-show");
 
-            formSuccess.setAttribute("tabindex", "-1");
-            formSuccess.focus();
-        }, 500);    /* Timeout makes the confirmation appear smoothly */
+                setTimeout(() => {
+                    form.classList.add("form-hidden");  /* Gives time for button animation to occur and success borders to appear around the input fields */
+                }, 200);
+
+                setTimeout(() => {
+                    form.style.display = "none";    /* Makes the field to not be rendered by HTML, effectively disappears */
+                    form.reset();   /* Resets the input fields */
+
+                    sessionStorage.removeItem("contactName");   
+                    sessionStorage.removeItem("contactEmail");
+                    sessionStorage.removeItem("contactMessage");    /* Clears the sessionStorage of the three input fields now that form is submitted */
+
+                    formSuccess.setAttribute("tabindex", "-1");
+                    formSuccess.focus();
+                }, 500);    /* Timeout makes the confirmation appear smoothly */
+            }
+            else {
+                /* The server responded with an error - invalid key, rate limit, etc.*/
+                console.error("Form submission failed:", result.message);
+                alert("Something went wrong. Please try emailing me directly.");
+            }
+        }
+        catch (error) {
+            /* Catch network errors - user offline, CORS, etc. */
+            console.error("Network error during form submission:", error);
+            alert("Network error. Please check your internet connection and try again.");
+        }
     }
 });
