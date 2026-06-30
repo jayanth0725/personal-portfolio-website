@@ -391,11 +391,26 @@ footer {
         0 var(--space-m) var(--space-l) var(--colour-shadow);
 }
 
-.card img {
-    width: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: var(--space-s);
+.project-lang-container {
+    font-size: var(--text-xs);
+    color: var(--colour-text-muted);
+    margin-bottom: var(--space-s);
+    display: flex;
+    align-items: center;
+}
+
+.project-lang-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.project-links-container {
+    margin-top: var(--space-m);
+    display: flex;
+    gap: var(--space-m);
 }
 
 .project-link {

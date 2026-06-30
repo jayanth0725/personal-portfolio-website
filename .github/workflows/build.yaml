@@ -1,0 +1,29 @@
+name: Update Projects HTML
+
+on:
+    schedule:
+        - cron: '0 0 1,15 * *'
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
+            - name: Set up Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.x'
+
+            - name: Run Builder Script
+              run: python build_projects.py
+
+            - name: Commit and Push Changes
+              run: |
+                git config --local user.email "action@github.com"
+                git config --local user.name "Github Action"
+                git add *.html
+                git commit -m "Auto-rebuild projects.html and update timestamps" || exit 0
+                git push
