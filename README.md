@@ -2,7 +2,7 @@
 
 A responsive and accessible personal portfolio website built without frontend frameworks.
 
-**[View Live Site](https://web.iiit.ac.in/~jayanth.raveendra/)**
+**[View Live Site](https://jayanth0725-personal-portfolio.vercel.app/)**
 
 ## Technical Features
 
