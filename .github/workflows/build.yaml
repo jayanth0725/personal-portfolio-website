@@ -2,7 +2,7 @@ name: Update Projects HTML
 
 on:
     schedule:
-        - cron: '0 0 1,15 * *'
+        - cron: '23 1 1,15 * *'
     workflow_dispatch:
 
 permissions:
