@@ -2,7 +2,7 @@
 
 A responsive and accessible personal portfolio website built without frontend frameworks.
 
-**[View Live Site](https://jayanth0725-personal-portfolio.vercel.app/)**
+**<a href="https://jayanth0725-personal-portfolio.vercel.app" target="_blank" rel="noopener noreferrer">View Live Site</a>**
 
 ## Technical Features
 
