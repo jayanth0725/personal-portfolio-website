@@ -5,20 +5,37 @@ import re
 from datetime import datetime
 
 USERNAME = "jayanth0725"
-API_URL = f"https://api.github.com/users/{USERNAME}/repos?sort=updated"
+ORG_NAME = "team-zero-latency"
+
+USER_API_URL = f"https://api.github.com/users/{USERNAME}/repos?sort=updated"
+ORG_API_URL = f"https://api.github.com/orgs/{ORG_NAME}/repos"
 
 def get_language_color(language):
-    colors = {"Rust" : "#dea584", "Python" : "#3572a5", "C": "#555555", "C++": "#f34b7d", "HTML": "#e34c26", "JavaScript": "#f1e05a"}
+    colors = {"Rust": "#dea584", "Python": "#3572a5", "C": "#555555", "C++": "#f34b7d", "HTML": "#e34c26", "JavaScript": "#f1e05a"}
     return colors.get(language, "var(--colour-primary)")    
 
-def update_portfolio():
+def fetch_repositories(url):
     headers = {'User-Agent': 'Mozilla/5.0', 'Accept': 'application/vnd.github.v3+json'}
-    req = urllib.request.Request(API_URL, headers=headers)
-    
-    with urllib.request.urlopen(req) as response:
-        repos = json.loads(response.read().decode())
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req) as response:
+            return json.loads(response.read().decode())
+    except Exception as e:
+        print(f"Warning: Could not fetch from {url}. Error: {e}")
+        return []
 
-    filtered = [r for r in repos if 'portfolio' in r.get('topics', [])]
+def update_portfolio():
+    user_repos = fetch_repositories(USER_API_URL)
+    org_repos = fetch_repositories(ORG_API_URL)
+    
+    all_repos = user_repos + org_repos
+
+    filtered = []
+    seen_ids = set()
+    for repo in all_repos:
+        if repo['id'] not in seen_ids and 'portfolio' in repo.get('topics', []):
+            filtered.append(repo)
+            seen_ids.add(repo['id'])
 
     cards_html = ""
     for repo in filtered:
@@ -28,15 +45,31 @@ def update_portfolio():
         lang = html.escape(repo.get('language') or "Multiple")
         lang_color = get_language_color(repo.get('language'))
         homepage = html.escape(repo.get('homepage') or "")
+        
+        updated_at = repo.get('updated_at', '')
+        if updated_at:
+            date_obj = datetime.strptime(updated_at, "%Y-%m-%dT%H:%M:%SZ")
+            formatted_date = date_obj.strftime("%b %d, %Y")
+        else:
+            formatted_date = "Recently"
+
+        topics = repo.get('topics', [])
+        tags_html = ""
+        for t in topics:
+            if t != 'portfolio':
+                tags_html += f'<span class="topic-tag">{html.escape(t)}</span>'
 
         cards_html += f"""
             <section class="card hidden">
                 <h2 class="project-title">{name}</h2>
                 <div class="project-lang-container">
                     <span class="project-lang-dot" style="background-color: {lang_color};"></span>
-                    {lang}
+                    {lang} &nbsp;&bull;&nbsp; Updated {formatted_date}
                 </div>
-                <h3>What it does:</h3>
+                <div class="topic-tags-container">
+                    {tags_html}
+                </div>
+                <h3>Overview:</h3>
                 <p>{desc}</p>
                 <div class="project-links-container">
                     <a href="{url}" class="project-link" target="_blank" rel="noopener noreferrer">View Source</a>
@@ -53,9 +86,7 @@ def update_portfolio():
         try:
             with open(page, 'r') as file:
                 content = file.read()
-            
             updated_content = date_pattern.sub(current_date_str, content)
-            
             with open(page, 'w') as file:
                 file.write(updated_content)
         except FileNotFoundError:
@@ -78,4 +109,3 @@ def update_portfolio():
 
 if __name__ == "__main__":
     update_portfolio()
-    print("Successfully built projects.html and updated all timestamps.")
